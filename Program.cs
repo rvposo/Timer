@@ -1,4 +1,5 @@
 ﻿using System.Configuration.Assemblies;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading; 
 
@@ -13,7 +14,7 @@ class Program
 
     }
 
-    static void Start(int time, string tipo)
+    static void Start(int time)
     {
        int currentTime = 0;
        
@@ -24,40 +25,67 @@ class Program
 
             Console.Clear();
             currentTime++;
-            Console.WriteLine($"{currentTime} being counted in {tipo}");
-            Thread.Sleep(1000); //Aguarda 1 seg para incrementação.
+            Console.WriteLine($"{currentTime} being counted");
+            Thread.Sleep(100); //Aguarda 1 seg para incrementação.
        }
 
        Console.Clear();
        Console.WriteLine("Stopwatch finalizado");
-       Thread.Sleep(2000);
+       Thread.Sleep(10);
     }  
+    static void PreStart(int time)
+    {
+        Console.Clear();
+        Console.WriteLine("Ready...");
+        Thread.Sleep(1000);
+        Console.WriteLine("GO");
 
+        Start(time);
+    }
     static void Menu()
     {
         Console.Clear();
         Console.WriteLine("S = Segundos");
         Console.WriteLine("M = Minuto");
         Console.WriteLine("O - Sair"); //System.Enviroment.Exit;
-        Console.WriteLine("How much time to count: ");
+
+       
+         
+        string data = Console.ReadLine().ToLower();
+        char type = char.Parse(data.Substring(data.Length - 1, 1)); //data.Length - 1 decrementa a posição da string para achar o ultimo caractere.
+        int time = int.Parse(data.Substring(0, data.Length - 1));
+        int multiplier = 1; 
             
-            string option = "M";
-            switch(option)
+            
+            if (type == 'm')
             {
-              case "S":
+                multiplier = 60;
+            }
+            else if (type == 0)
+            {
+                System.Environment.Exit(0);
+            }
+
+            PreStart(time * multiplier);
+
+
+          /*  switch(data)
+            {
+              case "s":
                    CountSeg();
-                   Console.WriteLine(option);
               break;
 
-              case "M":
+              case "m":
                    CountMin();
               break;
 
-              case "O":
-
+              case "o":
+                   Exit();
               break;
-            }
+            }*/
     }
+
+    /*
 
     static void CountSeg()
     {
@@ -82,4 +110,6 @@ class Program
     {
         System.Environment.Exit(0);
     }
+
+    */
 }
