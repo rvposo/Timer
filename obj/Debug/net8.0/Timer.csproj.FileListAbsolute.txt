@@ -12,3 +12,4 @@ C:\Users\gabriel rvposo\dev\Timer\obj\Debug\net8.0\refint\Timer.dll
 C:\Users\gabriel rvposo\dev\Timer\obj\Debug\net8.0\Timer.pdb
 C:\Users\gabriel rvposo\dev\Timer\obj\Debug\net8.0\Timer.genruntimeconfig.cache
 C:\Users\gabriel rvposo\dev\Timer\obj\Debug\net8.0\ref\Timer.dll
+C:\Users\gabriel rvposo\dev\Timer\obj\Debug\net8.0\Timer.sourcelink.json
